@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <link rel="shortcut icon" href="images/bookshelf.png" type="image/x-icon">
+   
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <div id="overlay"></div>
+    <header>
+        <h1>My Library</h1>
+        <div id="search-container">
+          <div id="search-bar2">
+            <input id="search-input2"  type="text" placeholder="">
+            <i id="search-icon" class="bi bi-search"></i>
+          </div>
+        </div>
+    </header>
+    <main>
+        <div id="wrapper">
+            <div  id="newBookForm">
+                <i id="close-btn-newbook" class="bi bi-x-lg"></i>
+                <form  class="form-container">
+                  <h1>Add new book</h1>
+                  <input id ="titleinput" autocomplete="off" class="form" type="text" placeholder="Title"  required>
+                  <div id="error"></div>
+              
+                  <input id ="authorinput" autocomplete="off"  class="form" type="text" placeholder="Author" name="psw" required>
+              
+                  <input id="pagesinput"   class="form"  type="number" placeholder="pages"  name="quantity" min="1" max="10000" required>
+
+                  <input id="rateinput" step=".01" class="form"  type="number" placeholder="Rate" id="quantity" name="quantity" min="0" max="10" required>
+
+               <div id="isread-check" class="form">
+                <label class="check-label" for="">Have you read it?</label>  
+                <label class="switch">
+                  <input id="isRead" type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+               </div>
+              
+                  <div id="newbook-btn-container">
+                    <button  type="submit" id="btn-newbook">Submit</button>
+                  </div>
+                  
+                </form>
+                
+              </div>
+              <div  id="update-Form">
+                <i id="close-btn-update" class="bi bi-x-lg"></i>
+                <form  class="form-container">
+                  <h1>Book update</h1>
+              
+                  <input id ="titleinput-update" autocomplete="off" class="form" type="text" placeholder="Title"  required>
+                  <div id="error-update"></div>
+                  
+                  <input id ="authorinput-update" autocomplete="off"  class="form" type="text" placeholder="Author" name="psw" required>
+              
+                  <input id="pagesinput-update" class="form"  type="number" placeholder="pages"  name="quantity" min="1" max="10000" required>
+
+                  <input id="rateinput-update" step=".01" class="form"  type="number" placeholder="Rate" id="quantity" name="quantity" min="0" max="10" required>
+
+                   
+                  <div id="update-isread-check" class="form">
+                    <label class="check-label"  for="">Have you read it?</label>  
+                  <label class="switch">
+                    <input id="isRead-update" type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                   </div>
+               
+                  <div id="update-btn-container">
+                    <button  type="submit" id="btn-update">update</button>
+                  </div>
+                  
+                  
+                </form>
+              </div>
+        </div>
+      <div id="container">
+        <div id="books-container" class="container"></div>
+        <div id="left-container">
+          <div id="search-bar">
+            <input id="search-input"  type="text" placeholder="">
+            <i id="search-icon" class="bi bi-search"></i>
+          </div>
+          <div id="book-info">
+            <div id="info-title"><h2>Information</h2></div> 
+            <p id="text1">Books:</p>
+            <p id="number1">0</p>
+            <p id="text2">  Completed Books:</p>
+            <p id="number2">0</p>
+          </div>
+        </div>  
+      </div>
+        
+        <button id="add-btn">
+            <i id="plus-icon" class="bi bi-plus-lg"></i>
+        </button>
+        
+    </main>
+    <footer>
+      <div id="footer">
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,591 @@
+header{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.6em;
+    display: block;
+    padding-bottom: 40px;
+  }
+
+header>h1{
+    margin-left: 3.5%;
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+  }
+
+body{
+    background-color: #F0FFFF		  ;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 10%;
+  }
+ 
+#overlay{
+    display: none;    /* Hidden by default */
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+}
+
+#wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+/********************* newbook-update forms *********************/  
+#newBookForm,#update-Form{
+    position:fixed;
+    display: none;
+    border: 2px solid mistyrose;
+    background-color: azure		;
+    z-index:3;
+    border-radius: 10px;
+    width: 350px;
+    height: 500px;
+    justify-content: center;
+    vertical-align:middle;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+#close-btn-newbook,#close-btn-update{
+    margin-top: 2%;
+    display: block;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    position:absolute; right:10px; top:5px;
+    color: black;
+  }
+
+.form{
+    display: block;
+    margin-top: 10%;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid mistyrose ;
+    width:90%;
+    text-align: start;
+    unicode-bidi: plaintext;
+  }
+
+#btn-newbook,#btn-update{
+    display: block;
+    margin-top: 4%;
+    border-radius: 5px;
+    outline: none;
+    border:1px solid whitesmoke;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 10%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: hsl(84, 100%, 59%);
+  }
+
+#btn-newbook{
+    background-color: hsl(84, 100%, 69%);
+  }
+
+#btn-newbook:hover{
+    background-color: hsl(84, 100%, 65%);
+  }
+
+#btn-newbook:active{
+    background-color: hsl(84, 100%, 61%);
+  }
+
+#btn-update{
+    background-color: hsl(180, 100%, 50%);
+  }
+
+#btn-update:hover{
+    background-color: hsl(180, 100%, 47%);
+  }
+
+#btn-update:active{
+    background-color: hsl(180, 100%, 45%);
+  }
+
+#newbook-btn-container,#update-btn-container{
+    display: flex;
+    justify-content: center;
+  }
+
+#error,#error-update{
+    color: red;
+    margin-top: 4%;
+    margin-bottom: -7px;
+    max-width: 223px;
+  }
+
+#isread-check,#update-isread-check{
+    display: flex;
+    border:none;
+  }
+
+.check-label{
+    vertical-align:bottom ;
+    margin-right: 5%;
+    margin-top: 2%;
+  }
+
+ /********************* newbook-update forms *********************/   
+
+
+ /********************* isread checkbox *********************/ 
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 24px;
+  }
+  
+  /* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /*The slider*/
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+.slider.round{
+    border-radius: 34px;
+  }
+  
+.slider.round:before{
+    border-radius: 50%;
+  }
+ /********************* isread checkbox *********************/
+
+ /********************* books container & bookcard *********************/
+#container{
+    display: flex;
+  }
+
+#books-container{
+    overflow-wrap: break-word;
+    grid-template-columns: repeat(auto-fill, minmax(305px, 1fr));
+    display: grid;
+    width: 80%;
+    text-align: center;
+    grid-gap: 2em;
+    justify-items: center;
+  }
+
+.book-card{
+    background-color: white;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    border:1px solid black;
+    width: 270px;
+    max-width: 300px;
+    height: 350px;
+    margin-top: 15%;
+    position: relative;
+    border-radius: 10px;
+    border-color: rgb(38, 224, 38);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+.book-card>h1{
+    font-family: Helvetica;
+    margin-top:15%;
+    font-size: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    white-space: nowrap;
+    overflow: hidden;    
+    text-overflow:ellipsis;
+    text-align: start;
+    unicode-bidi: plaintext;
+    text-align: center;
+  }
+
+.book-card>div>i{
+    margin-right:2% ;
+  }
+
+.book-card>div{
+    font-size: 1.4em;
+  }
+  
+.book-card>p{
+    margin-bottom: 15%;
+    font-size: 1.4em;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+.book-card:hover{
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2);
+  }
+
+#star{
+    color: orange;
+  }
+
+#ratediv{
+    margin-bottom: 12%;
+  }
+
+.book-card-btn{
+    display: none;
+    font-size: 1.5em;
+    border-radius: 10px;
+  }
+
+#delete-btn{
+    color: red;
+    margin-top: 2%;
+    display: block;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    position:absolute;
+    right:10px; top:5px;
+  }
+
+#delete-btn:hover{
+    transform:scale(1.2);
+    cursor: pointer;
+  }
+  
+.bi-trash{
+    color: red;
+  }
+
+#settings-btn{
+    color: green;
+    margin-top: 2%;
+    display: block;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    position:absolute; left:10px; top:5px;
+  }
+
+#settings-btn:hover{
+    transform:scale(1.2);
+    cursor: pointer;
+  }
+ /********************* books container & bookcard *********************/ 
+
+/********************* left container *********************/
+#left-container{
+    width:20%;
+    border-left: 3px solid snow;
+    display: flex;
+    height: 100vh;
+    position: fixed;
+    overflow: auto;
+    right: 0;
+    top: 0;
+    overflow: auto;
+    background-color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+    padding: 0; 
+    margin: 0;
+  }
+
+#search-bar,#search-bar2{
+    display: flex;
+    border: 2px solid #CCD1D1;
+    border-radius: 40px;
+    width: 82%;
+    margin-top: 10%;
+    outline: none;
+    padding: 10px;
+    align-items: center;
+    border-radius: 30px;
+    height: 35px;
+    justify-content:center;
+  }
+
+#search-bar2{
+    display: none;
+  }
+
+#search-bar:hover,#search-bar:focus-within,#search-bar2:hover,#search-bar2:focus-within{
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+  }
+
+#search-input,#search-input2{
+    color:turquoise;
+    font-size: 1.6rem;
+    background-color: transparent;  
+    border:none;
+    outline: none;
+    text-align: start;
+    unicode-bidi: plaintext;
+    width: 92%;
+  }
+
+#search-icon{
+    color: turquoise;
+    font-size: 2rem;
+    margin-left: 0.1em;
+    cursor: pointer;
+    vertical-align: baseline;
+  }
+
+/********************* library information *********************/  
+#book-info{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-areas: 'hd hd hd hd hd hd'
+    'b b . . . n'
+    'b1 b1 b1 b1 . n1';
+    width: 80%;
+    justify-content: center;
+  }
+
+#text1{
+    grid-area: b;
+    text-align: left;
+  }
+
+#number1{
+    grid-area: n;
+    float: right;
+  }
+
+#text2{
+    grid-area: b1;
+    text-align: left;
+
+}
+
+#number2{
+    grid-area: n1;
+    float: right;
+    align-self:initial;
+  }
+
+#info-title{
+    grid-area: hd;
+    text-align: center;
+  }
+/********************* library information *********************/  
+/********************* left container *********************/
+
+
+#add-btn{
+    position: fixed;
+    right: 0;
+    margin-right: 13px;
+    bottom: 0;
+    margin-bottom: 13px;
+    border: none;
+    border-radius: 50px;
+    background-color: turquoise;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.5s;
+  }
+
+#plus-icon{
+    font-size:2.2em;
+    color: white;
+  }
+
+#add-btn:hover{
+    transform:rotate(180deg) scale(1.1);
+    cursor: pointer;
+  }
+
+.fas{
+    text-align: center;
+    color: white;
+  }
+ 
+#footer{
+    padding-top: 10%;
+  }
+
+/********************* media queries *********************/
+  @media only screen and (max-width: 1240px)
+  {
+    .book-card>h1{
+      margin-top: 20%;
+      font-size: 1.5em;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+   #books-container{
+     width: 75%;
+   }
+   #left-container{
+    width:25%;
+   }
+   #books-container{
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .book-card{
+    width: 220px;
+  }
+  }
+
+  @media only screen and (max-width: 1040px)
+   {
+    header{
+      text-align: center;
+    }
+
+    #left-container{
+      display:none;
+    }
+
+    #search-container{
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #search-bar2{
+      width: 50%;
+      display: flex;
+      justify-content: center;
+    }
+      
+    #search-input2{    
+      width: 92%;  
+    }
+
+    header{
+      justify-content: center;
+    }
+
+    #left-container{
+      display: none;
+    }
+
+    #books-container{
+      margin: auto;
+      text-align: center;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      width: 100%;  
+    }
+
+    .book-card{
+      margin: auto;
+      width: 220px;
+      margin-bottom: 10%;
+    }
+
+   }
+
+   @media only screen and (max-width: 700px)
+   {
+
+    #add-btn{
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    #search-bar2{
+      width:70%;
+    }
+    
+    .book-card{
+      margin-top: 13px;
+      width: 150px;
+      height: 250px;
+      margin-bottom: 0px;
+    }
+
+    .book-card>h1{
+      margin-top: 25%;
+      line-height: normal;
+      font-size: 1.2em;
+    }
+  
+    .book-card>div{
+      margin-top: 5%;
+      font-size: 1.1em;
+    }
+    
+    .book-card>p{
+      margin-bottom: 12%;
+      font-size: 1.1em;
+    }   
+  
+    #ratediv{
+      margin-bottom: 12%;
+    }
+  
+    .book-card-btn{
+      display: none;
+      font-size: 1.5em;
+      border-radius: 10px;
+    }
+
+    #books-container{ 
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    #newBookForm,#update-Form{
+      border: 2px solid mistyrose;
+      border-radius: 10px;
+      width: 320px;
+      height: 500px;
+    }
+
+   }
